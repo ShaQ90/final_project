@@ -1,5 +1,13 @@
 import yaml
 import pandas as pd
+import spacy
+
+
+# Global vars
+
+nlp = spacy.load('en_core_web_sm')
+
+
 
 #import yaml paths
 def import_yaml():
@@ -12,9 +20,12 @@ def import_yaml():
     return config
 
 
-# change sentiment from word to int
-def sentiment_to_int(df):
+def convert_token(text):
     
-    df['sentiment'] = df['sentiment'].replace({'positive': 1, 'neutral': 0, 'negative': -1})
-    pd.to_numeric(df['sentiment'])
-    return df
+    # Lowercasing the text
+    doc = nlp(str(text).lower()) 
+
+    # Lemmatize and remove stopwords
+    tokens = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
+    return ' '.join(tokens)
+

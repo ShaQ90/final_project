@@ -1,11 +1,13 @@
 
 #raw files
 data_raw:
-    sample: "../data/raw/sample_submission.csv"
-    train: "../data/raw/train.csv"
-    test: "../data/raw/test.csv"
+    sample: "../data/raw/sample_submission.tsv"
+    train: "../data/raw/train.tsv"
+    test: "../data/raw/test.tsv"
 
 #cleaned files
 data_clean:
     train: "../data/clean/train.csv"
     test: "../data/clean/test.csv"
+    spacy_train: "../data/clean/train_spacy.csv"
+    spacy_test: "../data/clean/test_spacy.csv"
